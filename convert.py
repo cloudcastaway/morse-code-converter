@@ -1,40 +1,49 @@
 class Convert():
     def __init__(self):
-        self.word = ""
-        self.morse_code = ""
-
         # alpha-numeric symbols and some special chars - morse code chart
-        chart = {'A':'.-', 'B':'-...',
-                 'C':'-.-.', 'D':'-..', 'E':'.',
-                 'F':'..-.', 'G':'--.', 'H':'....',
-                 'I':'..', 'J':'.---', 'K':'-.-',
-                 'L':'.-..', 'M':'--', 'N':'-.',
-                 'O':'---', 'P':'.--.', 'Q':'--.-',
-                 'R':'.-.', 'S':'...', 'T':'-',
-                 'U':'..-', 'V':'...-', 'W':'.--',
-                 'X':'-..-', 'Y':'-.--', 'Z':'--..',
-                 '1':'.----', '2':'..---', '3':'...--',
-                 '4':'....-', '5':'.....', '6':'-....',
-                 '7':'--...', '8':'---..', '9':'----.',
-                 '0':'-----', ', ':'--..--', '.':'.-.-.-',
-                 '?':'..--..', '/':'-..-.', '-':'-....-',
-                 '(':'-.--.', ')':'-.--.-'}
+        self.chart = {"a": ".-", "b": "-...",
+                "c": "-.-.", "d": "-..", "e": ".",
+                "f": "..-.", "g": "--.", "h": "....",
+                "i": "..", "j": ".---", "k": "-.-",
+                "l": ".-..", "m": "--", "n": "-.",
+                "o": "---", "p": ".--.", "q": "--.-",
+                "r": ".-.", "s": "...", "t": "-",
+                "u": "..-", "v": "...-", "w": ".--",
+                "x": "-..-", "y": "-.--", "z": "--..",
+                "1": ".----", "2": "..---", "3": "...--",
+                "4": "....-", "5": ".....", "6": "-....",
+                "7": "--...", "8": "---..", "9": "----.",
+                "0": "-----", ", ": "--..--", ".": ".-.-.-",
+                "?": "..--..", "/": "-..-.", "-": "-....-",
+                "(": "-.--.", ")": "-.--.-", " ": "/"}
     
-    def encrypt(self, input_word):
-        for char in input_word:
-            self.morse_code += " "
+    # converts plain text into morse code
+    def encrypt(self, input_text):
+        morse_code = ""
+        for char in input_text:
+            morse_code += " "
             for key, value in self.chart.items():
                 if char == key:
-                    self.morse_code += value
+                    morse_code += value
                     break
-        return self.morse_code
+        return morse_code
     
     def decrypt(self, input_morse_code):
+        text = ""
         for char in input_morse_code:
             if char == " ":
                 continue
-            for key, value in self.char.items():
+            for key, value in self.chart.items():
                 if char == value:
-                    self.word += key
+                    text += key
                     break
-        return self.word
+        return text
+    
+    def get_method(self, selected_method):
+        if selected_method == "e":
+            return "encrypt"
+        else:
+            return "decrypt"
+    
+    def get_chart(self):
+        return self.chart
