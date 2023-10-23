@@ -9,7 +9,7 @@ if __name__ == '__main__':
     convert_string = Convert()
     invalid_char = True
     while invalid_char:
-        string = input(f"Type in a word or sentence to {convert_string.get_method(selection)}: ")
+        string = input(f"Type in a word or sentence to {convert_string.get_method(selection)}: ").lower()
         for char in string:
             if char not in convert_string.get_chart():
                 print(f"You typed in an invalid character: {char}")

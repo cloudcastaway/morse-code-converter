@@ -30,11 +30,10 @@ class Convert():
     
     def decrypt(self, input_morse_code):
         text = ""
-        for char in input_morse_code:
-            if char == " ":
-                continue
+        words_list = input_morse_code.split()
+        for letter in words_list:
             for key, value in self.chart.items():
-                if char == value:
+                if letter == value:
                     text += key
                     break
         return text
